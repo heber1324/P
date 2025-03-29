@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #000;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+            flex-direction: column;
+        }
+        .message {
+            font-size: 2em;
+            animation: colorChange 2s infinite, float 3s ease-in-out infinite, fadeIn 5s forwards;
+            opacity: 0;
+            margin: 10px 0;
+        }
+        .happy {
+            color: #ff4500;
+        }
+        .birthday {
+            color: #32cd32;
+        }
+        .rios {
+            color: #1e90ff;
+        }
+        @keyframes colorChange {
+            { color: #ff4500; }
+            50% { color: #32cd32; }
+            100% { color: #ff4500; }
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #ff4500;
+            animation: fall 5s linear infinite;
+        }
+        @keyframes fall {
+            0% { transform: translateY(-100vh); }
+            100% { transform: translateY(100vh); }
+        }
+        .Happy_Birthday {
+            margin: 0 0;
+            position: absolute;
+            font: 16px Verdana;
+            color: #eee;
+            height: 25px;
+            top: calc(100vh - 30px);
+            text-shadow: 2px white;
+            animation: fadeIn 5s forwards;
+            opacity: 0;
+        }
+        .sticker {
+            width: 100px;
+            height: auto;
+            margin-top: 20px;
+            animation: fadeIn 5s forwards;
+            opacity: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="message happy">Faliz</div>
+    <div class="message birthday">Cumpleaños!</div>
+    <div class="message rios">Rios G4y</div>
+    <div class="Happy_Birthday">Happy Birthday Rios G4y</div>
+    <img src="https://i.pinimg.com/originals/6b/4b/3e/6b4b3e4e4b4e4b4e4b4e4b4e4b4e4b4e.jpg" alt="Sticker" class="sticker">
+    <script>
+        function createConfetti() {
+            const confetti = document.createElement('div');
+            confetti.classList.add('confetti');
+            confetti.style.left = Math.random() * 100 + 'vw';
+            confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
+            document.body.appendChild(confetti);
+
+            setTimeout(() => {
+                confetti.remove();
+            }, 5000);
+        }
+
+        setInterval(createConfetti, 200);
+    </script>
+</body>
+</html>
